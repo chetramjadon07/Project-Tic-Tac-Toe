@@ -1,0 +1,456 @@
+from tkinter import *
+from tkinter import messagebox
+import random
+
+ttt = Tk()
+ttt.geometry('600x600')
+ttt.title('Tic-Tac-Toe')
+ttt.resizable(False , False)
+# c = 1
+p1 = 'USER 1'
+p2 = 'USER 2'
+p1c = 0
+p2c = 0
+
+
+
+clicked = "true"
+b_color='white'
+f_color='#efbbff'
+count=0
+theme_option = IntVar()
+theme_option.set(5)
+
+
+def exi():
+    value = messagebox.askquestion('Confirm exit', 'Are you sure you want to exit?')
+    if value == 'yes':
+        exit()
+
+
+
+
+def play():
+    global count
+    global p1
+    global p2
+
+    count+=1
+
+
+    f2 = Frame(bg=f_color)
+    f2.place(width=600, height=600)
+    l1 = Label(f2, bg='#be29ec')
+    l1.place(x=0, y=0, width=600, height=105)
+    l2 = Label(f2, bg='#be29ec')
+    l2.place(x=0, y=560, width=600, height=50)
+
+    def db():
+        b1.config(state=DISABLED)
+        b2.config(state=DISABLED)
+        b3.config(state=DISABLED)
+        b4.config(state=DISABLED)
+        b5.config(state=DISABLED)
+        b6.config(state=DISABLED)
+        b7.config(state=DISABLED)
+        b8.config(state=DISABLED)
+        b9.config(state=DISABLED)
+        lc1.config(bg='#efbbff')
+        lc2.config(bg='#efbbff')
+        messagebox.showinfo('Tic-Tac-Toe','Please click on NEXT button.')
+        next.config(state=NORMAL)
+        # lc1.config(bg='#efbbff')
+        # lc2.config(bg='#efbbff')
+
+
+    def show(b):
+        global clicked
+        global p1c
+        global p2c
+
+        if b["text"] == " " and clicked == "true":
+            b["text"] = "X"
+            clicked = "false"
+            lc1.config(bg='#efbbff')
+            lc2.config(bg='yellow')
+
+
+
+
+
+        elif b["text"] == " " and clicked == "false":
+            b["text"] = "O"
+            clicked = "true"
+            lc2.config(bg='#efbbff')
+            lc1.config(bg='yellow')
+
+
+        else:
+            messagebox.showerror('Tic-Tac-Toe', "Sorry! This block is already occupied. Select another block")
+
+        if b1["text"] == "X" and b2["text"] == "X" and b3["text"] == "X":
+            b1["background"],b2["background"],b3["background"] = 'yellow','yellow','yellow'
+            clicked = "true"
+            p1c+=1
+            db()
+
+        elif b1["text"] == "O" and b2["text"] == "O" and b3["text"] == "O":
+            b1["background"], b2["background"], b3["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+        elif b4["text"] == "X" and b5["text"] == "X" and b6["text"] == "X":
+            b4["background"],b5["background"],b6["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+
+        elif b4["text"] == "O" and b5["text"] == "O" and b6["text"] == "O":
+            b4["background"], b5["background"], b6["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+
+        elif b7["text"] == "X" and b8["text"] == "X" and b9["text"] == "X":
+            b7["background"],b8["background"],b9["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b7["text"] == "O" and b8["text"] == "O" and b9["text"] == "O":
+            b7["background"], b8["background"], b9["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+#################################################################
+        elif b1["text"] == "X" and b4["text"] == "X" and b7["text"] == "X":
+            b1["background"],b4["background"],b7["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b1["text"] == "O" and b4["text"] == "O" and b7["text"] == "O":
+            b1["background"], b4["background"], b7["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+        elif b2["text"] == "X" and b5["text"] == "X" and b8["text"] == "X":
+            b2["background"],b5["background"],b8["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b2["text"] == "O" and b5["text"] == "O" and b8["text"] == "O":
+            b2["background"], b5["background"], b8["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+        elif b3["text"] == "X" and b6["text"] == "X" and b9["text"] == "X":
+            b3["background"],b6["background"],b9["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b3["text"] == "O" and b6["text"] == "O" and b9["text"] == "O":
+            b3["background"], b6["background"], b9["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+####################################################################
+        elif b1["text"] == "X" and b5["text"] == "X" and b9["text"] == "X":
+            b1["background"],b5["background"],b9["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b1["text"] == "O" and b5["text"] == "O" and b9["text"] == "O":
+            b1["background"], b5["background"], b9["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+        elif b7["text"] == "X" and b5["text"] == "X" and b3["text"] == "X":
+            b7["background"],b5["background"],b3["background"] = 'yellow','yellow','yellow'
+            p1c+=1
+            clicked = "true"
+            db()
+        elif b7["text"] == "O" and b5["text"] == "O" and b3["text"] == "O":
+            b7["background"], b5["background"], b3["background"] = 'yellow', 'yellow', 'yellow'
+            p2c+=1
+            clicked = "true"
+            db()
+
+        elif b1["text"] != " " and b2["text"] != " " and b3["text"] != " " and b4["text"] != " " and b5["text"] != " " \
+                and b6["text"] != " " and b7["text"] != " " and b8["text"] != " " and b9["text"] != " ":
+            b1["background"], b2["background"], b3["background"] = 'red', 'red', 'red'
+            b4["background"], b5["background"], b6["background"] = 'red', 'red', 'red'
+            b7["background"], b8["background"], b9["background"] = 'red', 'red', 'red'
+            db()
+            clicked = "true"
+
+
+
+    lp1 = Label(f2, text='PLAYER-X', font=('Impact', 18, 'underline'), fg='#efbbff', bg='#800080')
+    lp1.place(x=20, y=20, width=150, height=35)
+    lc1 = Label(f2, text=p1, font=('Impact', 18), bg = 'yellow', fg='black')
+    lc1.place(x=20, y=60, width=150, height=35)
+    lp2 = Label(f2, text='PLAYER-O', font=('Impact', 18, 'underline'), fg='#efbbff', bg='#800080')
+    lp2.place(x=430, y=20, width=150, height=35)
+    lc2 = Label(f2, text=p2, font=('Impact', 18), bg= '#efbbff', fg='black')
+    lc2.place(x=430, y=60, width=150, height=35)
+    gn = Label(f2, text='GAME NUMBER', font=('Georgia', 18, 'bold'), bg='#be29ec', fg='black', borderwidth=2,
+               relief=SUNKEN)
+    gn.place(x=195, y=5, width=210, height=50)
+    gn2 = Label(f2, text=count, font=('Impact', 25,'bold'), bg='#efbbff', fg='black',borderwidth=2, relief=SUNKEN,)
+    gn2.place(x=270, y=60, width=60, height=40)
+
+
+    b1 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b1))
+    b1.place(x=75, y=110, width=145, height=145)
+    b2 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b2))
+    b2.place(x=225, y=110, width=145, height=145)
+    b3 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b3))
+    b3.place(x=375, y=110, width=145, height=145)
+    b4 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b4))
+    b4.place(x=75, y=260, width=145, height=145)
+    b5 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b5))
+    b5.place(x=225, y=260, width=145, height=145)
+    b6 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b6))
+    b6.place(x=375, y=260, width=145, height=145)
+    b7 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b7))
+    b7.place(x=75, y=410, width=145, height=145)
+    b8 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b8))
+    b8.place(x=225, y=410, width=145, height=145)
+    b9 = Button(f2, text=' ', font=('Arial Black', 65), background=b_color, borderwidth=2, relief=SUNKEN,
+                command=lambda: show(b9))
+    b9.place(x=375, y=410, width=145, height=145)
+    back = Button(f2, text='BACK', font=('Impact', 18), background='light grey', borderwidth=2, relief=SUNKEN,
+                  command=home)
+    back.place(x=5, y=565, width=120, height=30)
+    next = Button(f2, text='NEXT', font=('Impact', 18), background='light grey', borderwidth=2, relief=SUNKEN,command=play)
+    next.place(x=470, y=565, width=120, height=30)
+    next.config(state=DISABLED)
+
+    if count == 4:
+        def gameover():
+            f1 = Frame(bg='#efbbff')
+            f1.place(width=600, height=600)
+            global p1c
+            global p2c
+            global p1
+            global p2
+            result = ''
+            winner = ''
+            if p1c > p2c:
+                result = 'WINNER'
+                winner = p1
+            elif p2c > p1c:
+                result = 'WINNER'
+                winner = p2
+            elif p2c == p1c:
+                result = 'GAME TIE'
+                winner = 'TRY AGAIN'
+
+
+            colours = ['#2E0B36', '#641975', '#85219C', '#A629C2', ]
+
+            def color_changer():
+                ac = random.choice(colours)
+                l1.config(fg=ac)
+                l1.after(500, color_changer)
+
+            l1 = Label(f1, text='GAME-OVER', font=('Impact', 95, 'underline'), bg='#efbbff', fg='#800080')
+            l1.place(x=0, y=0, width=600, height=200)
+            color_changer()
+            l2 = Label(f1, bg='#be29ec', borderwidth=5, relief=SUNKEN)
+            l2.place(x=10, y=210, width=580, height=345)
+            l3 = Label(f1, bg='#641975')
+            l3.place(x=0, y=560, width=600, height=50)
+            l4 = Label(f1, text=result, font=('Arial Black', 50), bg='yellow', fg='black', borderwidth=10, relief=RIDGE)
+            l4.place(x=25, y=300, width=550, height=100)
+            l5 = Label(f1, text=winner, font=('Impact', 30,'underline'), bg='#641975', fg='white')
+            l5.place(x=100, y=410, width=400, height=70)
+            back = Button(f1, text='BACK', font=('Impact', 18), background='light grey', borderwidth=2, relief=SUNKEN,
+                          command=home)
+            back.place(x=5, y=565, width=120, height=30)
+
+        gameover()
+
+
+
+def rplay():
+    global count
+    global clicked
+    global p1c
+    global p2c
+    p1c=0
+    p2c=0
+    count=0
+    clicked='true'
+    play()
+
+
+
+def about():
+    f3 = Frame(bg='#efbbff')
+    f3.place(width=600, height=600)
+    t1 = Text(f3, font=('aerial', 11), bg='#efbbff', fg='#800080', wrap=WORD)
+    t1.insert(END, '''\t\t    WELCOME TO TIC TAC TOE   
+
+Tic Tac Toe is one of the most played games and is the best time killer game that you can play anywhere with your friends.This classic game contributes to your development growth in numerous way.
+The game of tic-tac-toe is a game of predictability. The moves that are believed to be important are highly predictable. This also makes it a game of opposites in a way, because this goes against the definition of an “important move”. But this predictability is what helps foster strategic thinking. 
+Tic Tac Toe is almost not a game, but a philosophical exercise, teaching the strength of controlling someone else’s actions.
+
+To start the game, user can click on "PLAY".
+
+This is a double player game. Here players choose their respective sign either 'X' or 'O'.
+A player marks any of the 3x3 squares with his symbol (may be “X” or “O”) and his aim is to
+create a straight line horizontally or vertically or diagonally  with two intensions: 
+(a) Create a straight line before his opponent to win the game. 
+(b) Restrict his opponent from creating a straight line first. 
+
+In case logically no one can create a straight line with his own symbol, the 
+game results a TIE. 
+
+Hence there are only three possible results – a player wins, his opponent 
+(human or computer) wins or it’s a tie. 
+If  any  player  is  able  to  draw  three  Xs  or  three  Os  in  the  following 
+combinations then that player wins. The combinations are: 
+           a) 1, 2, 3                      b) 4, 5, 6        
+           c) 7, 8, 9                      d) 1, 4, 7 
+           e)  2, 5, 8                     f) 3, 6, 9 
+           h) 1, 5, 9                      i) 3, 5, 7  
+
+
+
+HOPE THIS HELPS YOU
+ALL THE VERY BEST
+ENJOY YOUR GAME...''')
+    t1.tag_add('WELCOME TO TIC TAC TOE...', '1.0', '1.39')
+    t1.tag_config('WELCOME TO TIC TAC TOE...', font=('impact', 20, 'underline'), foreground='purple')
+    t1['state'] = 'disabled'
+    t1.place(x=3, y=10, height=500, width=582)
+    s = Scrollbar(f3, orient=VERTICAL, width=10, command=t1.yview)
+    t1.configure(yscrollcommand=s.set)
+    s.place(x=585, y=10, height=500, width=15)
+    l2 = Label(f3, bg='#be29ec',borderwidth=2, relief=SUNKEN)
+    l2.place(x=0, y=560, width=600, height=50)
+
+    back = Button(f3, text='BACK', font=('Impact', 18), background='white', borderwidth=2, relief=SUNKEN,
+                  command=home)
+    back.place(x=5, y=565, width=120, height=30)
+
+
+def setting():
+    global theme_option
+
+    f2 = Frame(bg='#efbbff')
+    f2.place(width=600, height=600)
+    l1 = Label(f2, bg='#be29ec', borderwidth=5, )
+    l1.place(x=0, y=0, width=600, height=105)
+    l2 = Label(f2, bg='#be29ec',borderwidth=2, relief=SUNKEN)
+    l2.place(x=0, y=560, width=600, height=50)
+    back = Button(f2, text='BACK', font=('Impact', 18), background='light grey', borderwidth=2, relief=SUNKEN,
+                  command=home)
+    back.place(x=5, y=565, width=120, height=30)
+    l1 = Label(f2, text='SETTINGS', font=('Impact', 40), fg='#efbbff', bg='#800080', borderwidth=2, relief=SUNKEN)
+    l1.place(x=0, y=20, width=600, height=65)
+    l2 = Label(f2, text='Edit Username', font=('Impact', 25,'underline'), fg='black', bg='#efbbff',anchor='w')
+    l2.place(x=15, y=115, width=300, height=50)
+    u1 = Label(f2, text='PLAYER-X', font=('Georgia', 20), fg='black', bg='#be29ec')
+    u1.place(x=15, y=175, width=280, height=50)
+    u2 = Label(f2, text='PLAYER-O', font=('Georgia', 20), fg='black', bg='#be29ec')
+    u2.place(x=15, y=235, width=280, height=50)
+
+    e1v = StringVar()
+    e2v = StringVar()
+
+    e1 = Entry(f2,textvariable=e1v,font=('Georgia', 20))
+    e1.place(x=305, y=175, width=280, height=50)
+    e2 = Entry(f2,textvariable=e2v,font=('Georgia', 20))
+    e2.place(x=305, y=235, width=280, height=50)
+
+    l3 = Label(f2, text='Change Theme', font=('Impact', 25, 'underline'), fg='black', bg='#efbbff', anchor='w')
+    l3.place(x=15, y=295, width=300, height=50)
+
+    radio = Radiobutton(f2,text='Theme-1',font=('Lucida Sans Unicode', 20,'bold'), fg='black', bg='#efbbff',variable=theme_option,
+                        value=1,anchor='w',activebackground='#efbbff',borderwidth=1, relief=SUNKEN)
+    radio.place(x=15, y=355, width=570, height=40)
+    radio = Radiobutton(f2, text='Theme-2', font=('Lucida Sans Unicode', 20,'bold'), fg='black', bg='#efbbff', variable=theme_option,
+                        value=2, anchor='w', activebackground='#efbbff',borderwidth=1, relief=SUNKEN)
+    radio.place(x=15, y=400, width=570, height=40)
+    radio = Radiobutton(f2, text='Theme-3', font=('Lucida Sans Unicode', 20,'bold'), fg='black', bg='#efbbff', variable=theme_option,
+                        value=3, anchor='w', activebackground='#efbbff',borderwidth=1, relief=SUNKEN)
+    radio.place(x=15, y=445, width=570, height=40)
+    radio = Radiobutton(f2, text='Default Theme', font=('Lucida Sans Unicode', 20,'bold'), fg='black', bg='#efbbff', variable=theme_option,
+                        value=4, anchor='w', activebackground='#efbbff', borderwidth=1, relief=SUNKEN)
+    radio.place(x=15, y=490, width=570, height=40)
+
+    def savef():
+        global p1
+        global p2
+        global b_color
+        global f_color
+        p1 = e1v.get()
+        p2 = e2v.get()
+        if p1=='':
+            p1 = 'USER 1'
+        if p2=='':
+            p2 = 'USER 2'
+
+        theme_no=theme_option.get()
+        if theme_no==1:
+            b_color='#e7b43a'
+            f_color='#945922'
+        elif theme_no==2:
+            b_color='#FFF5F7'
+            f_color='#FFE4CC'
+        elif theme_no == 3:
+            b_color = '#46C7FF'
+            f_color = '#044EE3'
+        elif theme_no == 4:
+            b_color = 'white'
+            f_color = '#efbbff'
+
+        home()
+    save = Button(f2, text='SAVE', font=('Impact', 18), background='light grey', borderwidth=2, relief=SUNKEN,command=savef )
+    save.place(x=470, y=565, width=120, height=30)
+
+def home():
+    f1 = Frame(bg='#efbbff')
+    f1.place(width=600, height=600)
+
+    colours=['#2E0B36','#641975','#85219C','#A629C2']
+    def color_changer():
+        ac=random.choice(colours)
+        l1.config(fg=ac)
+        l1.after(500,color_changer)
+
+
+    l1 = Label(f1, text='Tic-Tac-Toe', font=('Impact', 60, 'underline'), bg='#efbbff', fg='#800080')
+    l1.place(x=0, y=0, width=600, height=200)
+    color_changer()
+    l2 = Label(f1, bg='#be29ec', borderwidth=5, relief=SUNKEN)
+    l2.place(x=10, y=210, width=580, height=380)
+    b1 = Button(f1, text='PLAY', font=('Impact', 35), background='#d896ff', borderwidth=2, relief=SUNKEN, command=rplay)
+    b1.place(x=100, y=222, width=400, height=80, )
+    b2 = Button(f1, text='SETTINGS', font=('Impact', 35), background='#d896ff', borderwidth=2, relief=SUNKEN,
+                command=setting)
+    b2.place(x=100, y=314, width=400, height=80)
+    b3 = Button(f1, text='ABOUT', font=('Impact', 35), background='#d896ff', borderwidth=2, relief=SUNKEN,
+                command=about)
+    b3.place(x=100, y=406, width=400, height=80)
+    b4 = Button(f1, text='EXIT', font=('Impact', 35), background='#d896ff', borderwidth=2, relief=SUNKEN, command=exi)
+    b4.place(x=100, y=498, width=400, height=80)
+
+
+home()
+
+ttt.mainloop()
